@@ -1,6 +1,7 @@
 # Godot generated files
 .godot/
 .godot_user/
+build/
 *.import
 
 # Local engine and downloaded archives

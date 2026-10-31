@@ -1,0 +1,72 @@
+name: Build and deploy Explorer web game
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "Explorer/**"
+      - ".github/workflows/deploy-explorer.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: explorer-pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Download Godot 4.7.2 and official export templates
+        shell: bash
+        run: |
+          curl -L --fail --retry 3 \
+            https://github.com/godotengine/godot-builds/releases/download/4.7.2-stable/Godot_v4.7.2-stable_linux.x86_64.zip \
+            -o godot.zip
+          curl -L --fail --retry 3 \
+            https://github.com/godotengine/godot-builds/releases/download/4.7.2-stable/Godot_v4.7.2-stable_export_templates.tpz \
+            -o templates.tpz
+          unzip -q godot.zip
+          chmod +x Godot_v4.7.2-stable_linux.x86_64
+          mkdir -p "$HOME/.local/share/godot/export_templates/4.7.2.stable"
+          mkdir -p template-unpack
+          unzip -q templates.tpz -d template-unpack
+          cp -R template-unpack/templates/. "$HOME/.local/share/godot/export_templates/4.7.2.stable/"
+
+      - name: Export web build
+        shell: bash
+        run: |
+          mkdir -p Explorer/build/web
+          ./Godot_v4.7.2-stable_linux.x86_64 \
+            --headless \
+            --path Explorer \
+            --export-release Web \
+            Explorer/build/web/index.html
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
+      - name: Upload web build
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: Explorer/build/web
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
