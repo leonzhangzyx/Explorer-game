@@ -1,0 +1,56 @@
+{
+  "resources": {
+    "resource.gold": {"name": "金币"},
+    "resource.wood": {"name": "木材"},
+    "resource.ore": {"name": "矿石"},
+    "resource.arcane_essence": {"name": "奥术精华"}
+  },
+  "heroes": {
+    "hero.frontier_commander": {
+      "name": "边境指挥官",
+      "max_level": 10,
+      "is_battle_unit": true,
+      "max_health": 100,
+      "attack": 12,
+      "defense": 10,
+      "spell_power": 8,
+      "speed": 5,
+      "willpower": 10,
+      "command": 4
+    }
+  },
+  "units": {
+    "unit.militia": {"name": "民兵", "rarity": "common", "max_health": 10, "attack": 4, "defense": 4, "speed": 4, "capacity_cost": 1, "trait_id": "trait.militia_cohesion"},
+    "unit.shield_guard": {"name": "盾卫", "rarity": "common", "max_health": 16, "attack": 5, "defense": 9, "speed": 3, "capacity_cost": 1, "trait_id": "trait.guardian"},
+    "unit.ranger": {"name": "游侠", "rarity": "common", "max_health": 9, "attack": 7, "defense": 3, "speed": 5, "capacity_cost": 1, "trait_id": "trait.steady_aim"},
+    "unit.wolf_rider": {"name": "狼骑", "rarity": "common", "max_health": 12, "attack": 8, "defense": 4, "speed": 8, "capacity_cost": 1, "trait_id": "trait.momentum"},
+    "unit.priest": {"name": "祭司", "rarity": "common", "max_health": 8, "attack": 3, "defense": 3, "speed": 4, "capacity_cost": 1, "trait_id": "trait.purifying_prayer"},
+    "unit.war_golem": {"name": "战争傀儡", "rarity": "rare", "max_health": 24, "attack": 9, "defense": 10, "speed": 2, "capacity_cost": 1, "trait_id": "trait.construct"},
+    "unit.griffin_knight": {"name": "狮鹫骑士", "rarity": "legendary", "max_health": 20, "attack": 12, "defense": 7, "speed": 9, "capacity_cost": 1, "trait_id": "trait.dive_attack"},
+    "unit.astral_colossus": {"name": "星界巨像", "rarity": "mythic", "max_health": 60, "attack": 18, "defense": 14, "speed": 2, "capacity_cost": 2, "trait_id": "trait.astral_charge"}
+  },
+  "skills": {
+    "skill.heroic_charge": {"name": "英勇突击", "branch": "combat"},
+    "skill.guard_stance": {"name": "守护架势", "branch": "combat"},
+    "skill.decisive_strike": {"name": "决胜一击", "branch": "combat"}
+  },
+  "statuses": {
+    "status.injured": {"name": "伤势", "duration": -1},
+    "status.defending": {"name": "防御", "duration": 1}
+  },
+  "equipment": {
+    "equipment.training_blade": {"name": "训练剑", "slot": "weapon", "rarity": "common", "attack_bonus": 1}
+  },
+  "territory_levels": {
+    "territory.level.1": {"name": "前哨", "max_recruit_pool": 4},
+    "territory.level.2": {"name": "据点", "max_recruit_pool": 8},
+    "territory.level.3": {"name": "堡垒", "max_recruit_pool": 12}
+  },
+  "events": {
+    "event.war_golem_workshop": {"name": "失控工坊", "start_node_id": "inspect", "nodes": [{"id": "inspect", "exit": true}]}
+  },
+  "enemies": {
+    "enemy.rebel_patrol": {"name": "叛军巡逻队", "army_template_id": "army.rebel_patrol"}
+  }
+}
+

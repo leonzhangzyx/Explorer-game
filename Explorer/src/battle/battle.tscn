@@ -1,0 +1,147 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource path="res://src/battle/battle.gd" type="Script" id="1_battle"]
+
+[node name="Battle" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_battle")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.055, 0.065, 0.08, 1)
+
+[node name="Top" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 82.0
+grow_horizontal = 2
+
+[node name="TopMargin" type="MarginContainer" parent="Top"]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 14
+
+[node name="TopRow" type="HBoxContainer" parent="Top/TopMargin"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Title" type="Label" parent="Top/TopMargin/TopRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 27
+text = "叛军巡逻队"
+
+[node name="Round" type="Label" parent="Top/TopMargin/TopRow"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "部署阶段"
+
+[node name="Active" type="Label" parent="Top/TopMargin/TopRow"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "调整我方部署"
+
+[node name="GridPanel" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 22.0
+offset_top = 100.0
+offset_right = -440.0
+offset_bottom = -22.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridMargin" type="MarginContainer" parent="GridPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="Grid" type="GridContainer" parent="GridPanel/GridMargin"]
+layout_mode = 2
+columns = 10
+theme_override_constants/h_separation = 4
+theme_override_constants/v_separation = 4
+
+[node name="Sidebar" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -415.0
+offset_top = -390.0
+offset_right = -22.0
+offset_bottom = 390.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="SideMargin" type="MarginContainer" parent="Sidebar"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 22
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 22
+
+[node name="SideContent" type="VBoxContainer" parent="Sidebar/SideMargin"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="UnitInfo" type="Label" parent="Sidebar/SideMargin/SideContent"]
+custom_minimum_size = Vector2(0, 88)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "选择单位或格子"
+
+[node name="StartButton" type="Button" parent="Sidebar/SideMargin/SideContent"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+text = "开始战斗"
+
+[node name="DefendButton" type="Button" parent="Sidebar/SideMargin/SideContent"]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+text = "防御"
+disabled = true
+
+[node name="WaitButton" type="Button" parent="Sidebar/SideMargin/SideContent"]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+text = "等待"
+disabled = true
+
+[node name="Hint" type="Label" parent="Sidebar/SideMargin/SideContent"]
+layout_mode = 2
+text = "部署阶段：点击我方单位，再点击左侧三列中的空格调整位置。"
+autowrap_mode = 2
+
+[node name="Log" type="RichTextLabel" parent="Sidebar/SideMargin/SideContent"]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+scroll_active = true
+scroll_following = true
+
+[node name="ReturnButton" type="Button" parent="Sidebar/SideMargin/SideContent"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+text = "返回世界地图"
+visible = false

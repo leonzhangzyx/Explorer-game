@@ -1,0 +1,165 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource path="res://src/world/world_map.gd" type="Script" id="1_world"]
+
+[node name="WorldMap" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_world")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.025, 0.035, 0.031, 1)
+mouse_filter = 2
+
+[node name="Header" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 82.0
+grow_horizontal = 2
+
+[node name="HeaderMargin" type="MarginContainer" parent="Header"]
+layout_mode = 2
+theme_override_constants/margin_left = 26
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 26
+theme_override_constants/margin_bottom = 14
+
+[node name="HeaderRow" type="HBoxContainer" parent="Header/HeaderMargin"]
+layout_mode = 2
+theme_override_constants/separation = 28
+
+[node name="Title" type="Label" parent="Header/HeaderMargin/HeaderRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 27
+text = "灰烬边境 · 冒险地图"
+
+[node name="Day" type="Label" parent="Header/HeaderMargin/HeaderRow"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 19
+text = "第 1 天"
+
+[node name="ActionPoints" type="Label" parent="Header/HeaderMargin/HeaderRow"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 19
+text = "行动点 10 / 10"
+
+[node name="Threat" type="Label" parent="Header/HeaderMargin/HeaderRow"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 19
+text = "威胁 0"
+
+[node name="Resources" type="Label" parent="Header/HeaderMargin/HeaderRow"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "金币 0  木材 0  矿石 0  精华 0"
+
+[node name="MapPanel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 22.0
+offset_top = 100.0
+offset_right = -350.0
+offset_bottom = -22.0
+grow_horizontal = 2
+grow_vertical = 2
+clip_contents = true
+self_modulate = Color(0.55, 0.59, 0.48, 1)
+
+[node name="MapCanvas" type="Control" parent="MapPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sidebar" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -330.0
+offset_top = -390.0
+offset_right = -22.0
+offset_bottom = 390.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="SidebarMargin" type="MarginContainer" parent="Sidebar"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 24
+
+[node name="SidebarContent" type="VBoxContainer" parent="Sidebar/SidebarMargin"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="HeroTitle" type="Label" parent="Sidebar/SidebarMargin/SidebarContent"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "远征英雄"
+
+[node name="HeroStatus" type="Label" parent="Sidebar/SidebarMargin/SidebarContent"]
+layout_mode = 2
+text = "等级 1  生命 100 / 100\n军队 0 / 4 编队"
+
+[node name="Separator" type="HSeparator" parent="Sidebar/SidebarMargin/SidebarContent"]
+layout_mode = 2
+
+[node name="LocationTitle" type="Label" parent="Sidebar/SidebarMargin/SidebarContent"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "边境营地"
+
+[node name="LocationDescription" type="Label" parent="Sidebar/SidebarMargin/SidebarContent"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_vertical = 3
+text = "选择地图地点以查看路线和费用。"
+autowrap_mode = 2
+
+[node name="RouteInfo" type="Label" parent="Sidebar/SidebarMargin/SidebarContent"]
+layout_mode = 2
+text = "当前位置"
+autowrap_mode = 2
+
+[node name="MoveButton" type="Button" parent="Sidebar/SidebarMargin/SidebarContent"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+text = "移动到这里"
+disabled = true
+
+[node name="InteractButton" type="Button" parent="Sidebar/SidebarMargin/SidebarContent"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+text = "调查当前地点"
+
+[node name="EndDayButton" type="Button" parent="Sidebar/SidebarMargin/SidebarContent"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+text = "结束回合"
+
+[node name="Message" type="Label" parent="Sidebar/SidebarMargin/SidebarContent"]
+custom_minimum_size = Vector2(0, 78)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.87, 0.77, 0.48, 1)
+text = "选择一处已揭示地点开始探索。"
+autowrap_mode = 2

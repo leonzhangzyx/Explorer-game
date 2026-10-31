@@ -1,0 +1,25 @@
+{
+  "start_node_id": "map.starting_camp",
+  "nodes": {
+    "map.starting_camp": {"name": "边境营地", "type": "camp", "terrain": "road", "position": [170, 500], "description": "旅程的起点。"},
+    "map.old_road": {"name": "古老道路", "type": "path", "terrain": "road", "position": [360, 475], "description": "破损石板仍指向东部。"},
+    "map.forest_cache": {"name": "林间物资", "type": "resource", "terrain": "forest", "position": [525, 320], "description": "可采集木材。", "reward": {"resource.wood": 20}},
+    "map.river_crossing": {"name": "浅河渡口", "type": "path", "terrain": "difficult", "position": [555, 590], "description": "水流拖慢行军。"},
+    "map.rebel_patrol": {"name": "叛军巡逻队", "type": "encounter", "terrain": "plains", "position": [735, 440], "description": "一支警惕的中立兵团控制道路。"},
+    "map.greenwatch": {"name": "绿望前哨", "type": "territory", "terrain": "road", "position": [930, 370], "description": "可控制的边境领地。"},
+    "map.hill_shrine": {"name": "山丘祭坛", "type": "event", "terrain": "difficult", "position": [765, 660], "description": "祭坛散发微弱的奥术光芒。"},
+    "map.eastern_gate": {"name": "东部关口", "type": "locked", "terrain": "road", "position": [1115, 485], "description": "关口将在后续阶段开放。"}
+  },
+  "edges": [
+    ["map.starting_camp", "map.old_road"],
+    ["map.old_road", "map.forest_cache"],
+    ["map.old_road", "map.river_crossing"],
+    ["map.old_road", "map.rebel_patrol"],
+    ["map.forest_cache", "map.rebel_patrol"],
+    ["map.river_crossing", "map.hill_shrine"],
+    ["map.rebel_patrol", "map.greenwatch"],
+    ["map.hill_shrine", "map.greenwatch"],
+    ["map.greenwatch", "map.eastern_gate"]
+  ],
+  "terrain_costs": {"road": 1, "plains": 1, "forest": 2, "difficult": 3}
+}

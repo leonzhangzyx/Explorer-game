@@ -1,0 +1,18 @@
+# Godot generated files
+.godot/
+.godot_user/
+*.import
+
+# Local engine and downloaded archives
+tools/
+Godot_v*.zip
+
+# Runtime output
+*.log
+*.tmp
+
+# OS and editor metadata
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
