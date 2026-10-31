@@ -48,7 +48,7 @@ jobs:
             --headless \
             --path Explorer \
             --export-release Web \
-            Explorer/build/web/index.html
+            build/web/index.html
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
